@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherNow</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Animated background orbs -->
+    <div class="bg-glow">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>⛅ WeatherNow</h1>
+            <p>Real-time weather for any location on Earth</p>
+        </div>
+
+        <!-- Moving marquee text -->
+        <div class="marquee-wrap">
+            <div class="marquee">
+                <span>🌡️ Temperature</span><span>💧 Humidity</span><span>💨 Wind Speed</span>
+                <span>👁️ Visibility</span><span>☀️ UV Index</span><span>🌍 Air Quality</span>
+                <span>📊 Pressure</span><span>🌤️ Live Conditions</span>
+                <span>🌡️ Temperature</span><span>💧 Humidity</span><span>💨 Wind Speed</span>
+                <span>👁️ Visibility</span><span>☀️ UV Index</span><span>🌍 Air Quality</span>
+                <span>📊 Pressure</span><span>🌤️ Live Conditions</span>
+            </div>
+        </div>
+
+        <!-- Search -->
+        <form class="search-form" id="searchForm">
+            <div class="search-box">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search any city or location..." maxlength="100" />
+                <button type="submit" id="searchBtn">Go</button>
+            </div>
+        </form>
+
+        <p class="error hidden" id="error"></p>
+
+        <!-- Weather result -->
+        <div id="weatherResult" class="hidden" style="width:100%; display:flex; flex-direction:column; gap:1.5rem;">
+            <div class="weather-card">
+                <p class="location" id="wLocation"></p>
+                <img class="icon" id="wIcon" alt="Weather icon" />
+                <p class="temp" id="wTemp"></p>
+                <p class="condition" id="wCondition"></p>
+                <p class="feels" id="wFeels"></p>
+            </div>
+            <div class="stats-grid" id="statsGrid"></div>
+        </div>
+
+        <!-- Placeholder -->
+        <div class="placeholder" id="placeholder">
+            <div class="emoji">🌤️</div>
+            <p>Enter a city name to get started</p>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

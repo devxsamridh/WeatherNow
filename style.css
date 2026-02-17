@@ -1,0 +1,295 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #161a26;
+    color: #e8eaf0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 { 
+    font-family: 'Space Grotesk', sans-serif; 
+}
+
+/* Animated background */
+.bg-glow {
+    position: fixed; 
+    inset: 0; 
+    z-index: 0; 
+    pointer-events: none;
+    overflow: hidden;
+}
+.bg-glow .orb {
+    position: absolute; 
+    border-radius: 50%; 
+    filter: blur(120px); 
+    opacity: 0.18;
+    animation: orbFloat 8s ease-in-out infinite alternate;
+}
+.bg-glow .orb1 { 
+    width: 500px; 
+    height: 500px; 
+    background: #d4881e; 
+    top: -10%; 
+    left: -10%; 
+}
+.bg-glow .orb2 { 
+    width: 400px; 
+    height: 400px; 
+    background: #2e8bc0; 
+    bottom: -10%; 
+    right: -10%; 
+    animation-delay: 3s; 
+}
+.bg-glow .orb3 { 
+    width: 300px; 
+    height: 300px; 
+    background: #8e44ad; 
+    top: 40%; 
+    left: 50%; 
+    animation-delay: 5s; 
+}
+
+@keyframes orbFloat {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(40px, -30px) scale(1.15); }
+}
+
+/* Container */
+.container {
+    position: relative; 
+    z-index: 1;
+    max-width: 600px; 
+    margin: 0 auto; 
+    padding: 3rem 1.5rem;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 2rem;
+}
+
+/* Header with glow text */
+.header { 
+    text-align: center; 
+    animation: fadeUp 0.8s ease-out; 
+}
+.header h1 {
+    font-size: 3rem; 
+    font-weight: 700; 
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #e8a830, #fff, #e8a830);
+    background-size: 200% 200%;
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+    text-shadow: 0 0 40px rgba(232, 168, 48, 0.3);
+}
+.header p {
+    color: #7a8299; 
+    margin-top: 0.5rem; 
+    font-size: 0.95rem;
+    animation: fadeUp 1s ease-out 0.2s both;
+}
+
+@keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Marquee */
+.marquee-wrap {
+    width: 100%; 
+    overflow: hidden; 
+    padding: 0.5rem 0;
+    animation: fadeUp 1s ease-out 0.3s both;
+}
+.marquee {
+    display: flex; 
+    gap: 3rem; 
+    width: max-content;
+    animation: marquee 20s linear infinite;
+    color: #555d73; 
+    font-size: 0.8rem; 
+    text-transform: uppercase; 
+    letter-spacing: 0.15em;
+}
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Search box */
+.search-form {
+    width: 100%; 
+    animation: fadeUp 0.8s ease-out 0.4s both;
+}
+.search-box {
+    display: flex; 
+    align-items: center; 
+    gap: 0.75rem;
+    background: rgba(30, 35, 50, 0.7); 
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(80, 90, 120, 0.3);
+    border-radius: 1rem; 
+    padding: 0.75rem 1.25rem;
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+.search-box:focus-within {
+    border-color: rgba(232, 168, 48, 0.5);
+    box-shadow: 0 0 30px rgba(232, 168, 48, 0.1), 0 0 60px rgba(232, 168, 48, 0.05);
+}
+.search-box svg { 
+    width: 20px; 
+    height: 20px; 
+    color: #7a8299; 
+    flex-shrink: 0; 
+}
+.search-box input {
+    flex: 1; 
+    background: none; 
+    border: none; 
+    outline: none;
+    color: #e8eaf0; 
+    font-size: 1rem; 
+    font-family: 'Inter', sans-serif;
+}
+.search-box input::placeholder { 
+    color: #555d73; 
+}
+.search-box button {
+    background: linear-gradient(135deg, #d4881e, #e8a830);
+    color: #161a26; 
+    border: none; 
+    border-radius: 0.75rem;
+    padding: 0.5rem 1.25rem; 
+    font-weight: 600; 
+    font-size: 0.9rem;
+    cursor: pointer; 
+    transition: filter 0.2s; 
+    font-family: 'Inter', sans-serif;
+}
+.search-box button:hover { 
+    filter: brightness(1.15); 
+}
+.search-box button:disabled { 
+    opacity: 0.4; 
+    cursor: not-allowed; 
+}
+
+/* Error */
+.error { 
+    color: #e74c3c; 
+    font-size: 0.9rem; 
+    animation: fadeUp 0.4s ease-out; 
+}
+
+/* Weather card */
+.weather-card {
+    width: 100%;
+    background: rgba(30, 35, 50, 0.7); 
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(80, 90, 120, 0.25);
+    border-radius: 1.5rem; 
+    padding: 2.5rem; 
+    text-align: center;
+    box-shadow: 0 0 60px rgba(232, 168, 48, 0.08);
+    animation: fadeUp 0.6s ease-out;
+}
+.weather-card .location { 
+    color: #7a8299; 
+    font-size: 0.9rem; 
+}
+.weather-card .temp {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 7rem; 
+    font-weight: 300; 
+    letter-spacing: -0.04em; 
+    line-height: 1;
+    margin: 0.5rem 0;
+    text-shadow: 0 0 40px rgba(232, 168, 48, 0.2);
+}
+.weather-card .condition { 
+    color: #e8a830; 
+    font-size: 1.15rem; 
+    font-weight: 500; 
+}
+.weather-card .feels {
+    color: #7a8299; 
+    font-size: 0.85rem; 
+    margin-top: 0.25rem;
+}
+.weather-card .icon { 
+    width: 80px; 
+    height: 80px; 
+    margin: 0.5rem auto; 
+}
+
+/* Stats grid */
+.stats-grid {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 0.75rem;
+    width: 100%; 
+    animation: fadeUp 0.6s ease-out 0.1s both;
+}
+@media (max-width: 500px) { 
+    .stats-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+    } 
+}
+.stat-card {
+    background: rgba(30, 35, 50, 0.6); 
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(80, 90, 120, 0.2);
+    border-radius: 1rem; 
+    padding: 1.25rem; 
+    text-align: center;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.stat-card:hover {
+    border-color: rgba(232, 168, 48, 0.3);
+    box-shadow: 0 0 20px rgba(232, 168, 48, 0.06);
+}
+.stat-card .stat-icon { 
+    font-size: 1.75rem; 
+    margin-bottom: 0.5rem; 
+}
+.stat-card .stat-label {
+    color: #7a8299; 
+    font-size: 0.7rem; 
+    text-transform: uppercase;
+    letter-spacing: 0.12em; 
+    margin-bottom: 0.25rem;
+}
+.stat-card .stat-value { 
+    font-weight: 600; 
+    font-size: 1.1rem; 
+}
+
+/* Placeholder */
+.placeholder {
+    text-align: center; 
+    color: #555d73; 
+    margin-top: 2rem;
+    animation: fadeUp 0.8s ease-out 0.5s both;
+}
+.placeholder .emoji { 
+    font-size: 3rem; 
+    margin-bottom: 0.75rem; 
+}
+
+/* Fade up */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden { 
+    display: none !important; 
+}
